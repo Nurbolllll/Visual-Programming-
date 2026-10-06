@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.lab6.HelloController">
+    <top>
+        <VBox spacing="10" Alignment="CENTER">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Label text="Каталог книг" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+            <HBox spacing="10" Alignment="CENTER_LEFT">
+                <Label text="Поиск:"/>
+                <TextField fx:id="txtSearch" promptText="Поиск по названию или автору..."/>
+                <Label text="Жанр:"/>
+                <ComboBox fx:id="cmbFilterGenre"/>
+                <Button text="Очистить фильтр" onAction="#onClearFilterClick"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <left>
+        <VBox spacing="5">
+            <padding>
+                <Insets top="0" right="10" bottom="10" left="10"/>
+            </padding>
+            <Label text="Быстрый выбор жанра:"/>
+            <ListView fx:id="listGenres" prefWidth="150" prefHeight="200"/>
+        </VBox>
+    </left>
+
+    <center>
+        <TableView fx:id="tableBooks">
+            <columns>
+                <TableColumn fx:id="colTitle" text="Название" prefWidth="200"/>
+                <TableColumn fx:id="colAuthor" text="Автор" prefWidth="150"/>
+                <TableColumn fx:id="colGenre" text="Жанр" prefWidth="120"/>
+                <TableColumn fx:id="colYear" text="Год издания" prefWidth="100"/>
+            </columns>
+        </TableView>
+    </center>
+
+    <bottom>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <GridPane hgap="10" vgap="10">
+                <Label text="Название:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <TextField fx:id="txtTitle" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                <Label text="Автор:" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                <TextField fx:id="txtAuthor" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+
+                <Label text="Жанр:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <ComboBox fx:id="cmbGenre" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                <Label text="Год:" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                <TextField fx:id="txtYear" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+            </GridPane>
+
+            <HBox spacing="10" Alignment="CENTER_LEFT">
+                <Button text="Добавить" onAction="#onAddClick"/>
+                <Button text="Изменить" onAction="#onEditClick"/>
+                <Button text="Удалить" onAction="#onDeleteClick"/>
+                <Label fx:id="lblCount" text="Найдено записей: 0" style="-fx-font-weight: bold;"/>
+            </HBox>
+        </VBox>
+    </bottom>
+</BorderPane>
